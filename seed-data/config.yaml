@@ -1,0 +1,53 @@
+_config_version: 51
+model:
+  default: "ag/gemini-3.8-flash-high(high)"
+  provider: "custom"
+  base_url: "https://9router.anot.blitz.cloud/v1"
+  api_key: "${OPENAI_API_KEY}"
+plugins:
+  enabled:
+    - superpowers
+mcp_servers:
+  composio:
+    url: "https://connect.composio.dev/mcp"
+    headers:
+      x-consumer-api-key: "ck_B_s0Eb0FHoam_1hWltnp"
+approvals:
+  mode: smart
+  destructive_slash_confirm: false
+display:
+  show_reasoning: true
+  platforms:
+    telegram:
+      show_reasoning: true
+platforms:
+  telegram:
+    enabled: true
+    token: "${TELEGRAM_BOT_TOKEN}"
+    home_channel:
+      platform: "telegram"
+      chat_id: "5878992244"
+      name: "Home"
+    reply_to_mode: "first"
+    gateway_restart_notification: true
+    typing_indicator: true
+gateway:
+  stt_enabled: true
+  filter_silence_narration: true
+  group_sessions_per_user: true
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+compression:
+  enabled: true
+  threshold: 0.50
+  target_ratio: 0.20
+delegation:
+  max_concurrent_children: 10
+  max_iterations: 50
+command_allowlist:
+  - execute_code
+  - script execution via -e/-c flag
+onboarding:
+  seen:
+    profile_build_offered: true
